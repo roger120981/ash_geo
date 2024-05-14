@@ -1,7 +1,7 @@
 defmodule AshGeo.Test.Resource.Validation do
   @moduledoc false
 
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, domain: AshGeo.Test.Domain
   import AshGeo.Validation
 
   attributes do
@@ -29,6 +29,7 @@ defmodule AshGeo.Test.Resource.Validation do
     end
 
     update :update_within do
+      require_atomic? false
       argument :within, :geo_any
 
       validate contains(:geom, :within)
@@ -38,8 +39,6 @@ defmodule AshGeo.Test.Resource.Validation do
   end
 
   code_interface do
-    define_for AshGeo.Test.Api
-
     define :create_point, args: [:point]
   end
 

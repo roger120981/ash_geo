@@ -13,26 +13,25 @@ if Mix.env() == :dev do
 end
 
 if Mix.env() == :test do
-  config :logger, level: :warn
+  config :logger, level: :warning
 
   config :geo_postgis, json_library: Jason
 
   config :ash_geo, AshGeo.Test.Repo,
-    username: "ash_geo_test",
+    username: "postgres",
     database: "ash_geo_test",
     hostname: "localhost",
+    # sobelow_skip ["Config.Secrets"]
+    password: "postgres",
     pool: Ecto.Adapters.SQL.Sandbox
-
-  # sobelow_skip ["Config.Secrets"]
-  config :ash_geo, AshGeo.Test.Repo, password: "Tw1nozXPN1QLZPJzRUMhg4V4g6FCUYmki09ejUlzxCpbflQK"
 
   config :ash_geo,
     ecto_repos: [AshGeo.Test.Repo],
-    ash_apis: [AshGeo.Test.Api]
+    ash_domains: [AshGeo.Test.Domain]
 
   config :ash_geo, AshGeo.Test.Repo, migration_primary_key: [name: :id, type: :binary_id]
 
-  config :ash_geo, ash_apis: [AshGeo.Test.Api]
+  config :ash_geo, ash_domains: [AshGeo.Test.Domain]
 
   # Ash: type shorthands
   config :ash, :custom_types,

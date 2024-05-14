@@ -1,7 +1,7 @@
 defmodule AshGeo.Test.Repo do
   @moduledoc false
 
-  use AshPostgres.Repo, otp_app: :ash_geo
+  use AshPostgres.Repo, otp_app: :ash_geo, warn_on_missing_ash_functions?: false
 
   @doc false
   @impl AshPostgres.Repo

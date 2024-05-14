@@ -1,7 +1,7 @@
 defmodule AshGeo.Test.Resource.Geom do
   @moduledoc false
 
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, domain: AshGeo.Test.Domain
   import AshGeo.Postgis
   alias AshGeo.Test.Type.{Geometry4326, GeoAny4326}
 
@@ -33,8 +33,6 @@ defmodule AshGeo.Test.Resource.Geom do
   end
 
   code_interface do
-    define_for AshGeo.Test.Api
-
     define :create, args: [:geom]
     define :containing, args: [:geom]
     define :within_distance, args: [:geom, :distance]

@@ -196,7 +196,8 @@ defmodule AshGeo.Test do
         Ash.Changeset.new(Validation)
         |> Ash.Changeset.set_argument(:point, Geo.WKT.decode!("POINT(42 42)"))
 
-      assert :ok == ArgumentStructType.validate(cs, argument: :point, struct_type: Geo.Point)
+      assert :ok ==
+               ArgumentStructType.validate(cs, [argument: :point, struct_type: Geo.Point], %{})
     end
 
     test "accepts implicit nil" do
@@ -204,13 +205,15 @@ defmodule AshGeo.Test do
         Ash.Changeset.new(Validation)
         |> Ash.Changeset.set_argument(:point, nil)
 
-      assert :ok == ArgumentStructType.validate(cs, argument: :point, struct_type: Geo.Point)
+      assert :ok ==
+               ArgumentStructType.validate(cs, [argument: :point, struct_type: Geo.Point], %{})
     end
 
     test "accepts explicit nil" do
       cs = Ash.Changeset.new(Validation)
 
-      assert :ok == ArgumentStructType.validate(cs, argument: :point, struct_type: Geo.Point)
+      assert :ok ==
+               ArgumentStructType.validate(cs, [argument: :point, struct_type: Geo.Point], %{})
     end
 
     test "rejects unknown struct type" do
@@ -219,7 +222,7 @@ defmodule AshGeo.Test do
         |> Ash.Changeset.set_argument(:point, %TestStruct{})
 
       assert {:error, _} =
-               ArgumentStructType.validate(cs, argument: :point, struct_type: Geo.Point)
+               ArgumentStructType.validate(cs, [argument: :point, struct_type: Geo.Point], %{})
     end
   end
 
@@ -270,10 +273,10 @@ defmodule AshGeo.Test do
         |> Changeset.set_argument(:point, Geo.WKT.decode!("POINT(20 20)"))
 
       assert :ok ==
-               AshGeo.Validation.Topo.validate(cs,
-                 function: :contains?,
-                 geometry_a: :geom,
-                 geometry_b: :point
+               AshGeo.Validation.Topo.validate(
+                 cs,
+                 [function: :contains?, geometry_a: :geom, geometry_b: :point],
+                 %{}
                )
     end
 
@@ -287,10 +290,10 @@ defmodule AshGeo.Test do
         |> Changeset.set_argument(:point, Geo.WKT.decode!("POINT(420 420)"))
 
       assert {:error, _} =
-               AshGeo.Validation.Topo.validate(cs,
-                 function: :contains?,
-                 geometry_a: :geom,
-                 geometry_b: :point
+               AshGeo.Validation.Topo.validate(
+                 cs,
+                 [function: :contains?, geometry_a: :geom, geometry_b: :point],
+                 %{}
                )
     end
 
@@ -307,10 +310,10 @@ defmodule AshGeo.Test do
         )
 
       assert :ok ==
-               AshGeo.Validation.Topo.validate(cs,
-                 function: :contains?,
-                 geometry_a: :geom,
-                 geometry_b: :point
+               AshGeo.Validation.Topo.validate(
+                 cs,
+                 [function: :contains?, geometry_a: :geom, geometry_b: :point],
+                 %{}
                )
     end
 
@@ -327,10 +330,10 @@ defmodule AshGeo.Test do
         )
 
       assert {:error, _} =
-               AshGeo.Validation.Topo.validate(cs,
-                 function: :contains?,
-                 geometry_a: :geom,
-                 geometry_b: :point
+               AshGeo.Validation.Topo.validate(
+                 cs,
+                 [function: :contains?, geometry_a: :geom, geometry_b: :point],
+                 %{}
                )
     end
   end

@@ -1,0 +1,39 @@
+{
+  "attributes": [
+    {
+      "default": "fragment(\"gen_random_uuid()\")",
+      "size": null,
+      "type": "uuid",
+      "source": "id",
+      "references": null,
+      "allow_nil?": false,
+      "generated?": false,
+      "primary_key?": true
+    },
+    {
+      "default": "nil",
+      "size": null,
+      "type": "geometry(geometry,4326)",
+      "source": "geom",
+      "references": null,
+      "allow_nil?": true,
+      "generated?": false,
+      "primary_key?": false
+    }
+  ],
+  "table": "geoms",
+  "hash": "77A24849B80E261547690F6536F94C596BE2BFC9B0122D03448F917DD2A6EA4A",
+  "repo": "Elixir.AshGeo.Test.Repo",
+  "check_constraints": [],
+  "custom_indexes": [],
+  "custom_statements": [],
+  "schema": null,
+  "identities": [],
+  "multitenancy": {
+    "global": null,
+    "strategy": null,
+    "attribute": null
+  },
+  "base_filter": null,
+  "has_create_action": true
+}

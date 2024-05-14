@@ -36,7 +36,7 @@ defmodule AshGeo.GeoWkt do
 
   ### Options
 
-  #{Spark.OptionsHelpers.docs(AshGeo.Geometry.Use.opts_schema())}
+  #{Spark.Options.docs(AshGeo.Geometry.Use.opts_schema())}
   """
   @moduledoc since: "0.1.0"
 

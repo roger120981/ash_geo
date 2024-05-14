@@ -41,6 +41,3 @@ shell.nix
 
 # MacOS
 .DS_Store
-
-# Testing
-priv

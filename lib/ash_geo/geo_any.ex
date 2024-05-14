@@ -18,7 +18,7 @@ defmodule AshGeo.GeoAny.Use do
             opts: opts,
             opts_schema: @opts_schema
           ] do
-      opts = Spark.OptionsHelpers.validate!(opts, opts_schema)
+      opts = Spark.Options.validate!(opts, opts_schema)
       geometry_opts = Keyword.delete(opts, :prefer_binary_encoding)
 
       use AshGeo.Geometry, geometry_opts
@@ -78,7 +78,7 @@ defmodule AshGeo.GeoAny do
 
   ### Options
 
-  #{Spark.OptionsHelpers.docs(AshGeo.GeoAny.Use.opts_schema())}
+  #{Spark.Options.docs(AshGeo.GeoAny.Use.opts_schema())}
   """
   @moduledoc since: "0.1.0"
 
