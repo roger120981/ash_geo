@@ -92,7 +92,7 @@ defmodule AshGeo.Geometry.Use do
             opts_schema: @opts_schema,
             constraints_schema: @constraints_schema
           ] do
-      opts = Spark.OptionsHelpers.validate!(opts, opts_schema)
+      opts = Spark.Options.validate!(opts, opts_schema)
 
       static_constraints = Keyword.drop(opts, [:storage_type])
 
@@ -250,7 +250,7 @@ defmodule AshGeo.Geometry do
 
   ## Options
 
-  #{Spark.OptionsHelpers.docs(AshGeo.Geometry.Use.opts_schema())}
+  #{Spark.Options.docs(AshGeo.Geometry.Use.opts_schema())}
   """
   @moduledoc since: "0.1.0"
 

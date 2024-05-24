@@ -1,7 +1,7 @@
 defmodule AshGeo.Test.Resource.Constraint do
   @moduledoc false
 
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, domain: AshGeo.Test.Domain
 
   attributes do
     uuid_primary_key :id
@@ -30,8 +30,6 @@ defmodule AshGeo.Test.Resource.Constraint do
   end
 
   code_interface do
-    define_for AshGeo.Test.Api
-
     define :create_point, args: [:point]
     define :create_check_srid_4326, args: [:geom]
     define :create_force_srid_4326, args: [:geom]

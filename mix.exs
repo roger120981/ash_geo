@@ -39,9 +39,9 @@ defmodule AshGeo.MixProject do
     [
       {:jason, "~> 1.4"},
       {:geo, "~> 3.5"},
-      {:ash, "~> 2.13"},
+      {:ash, "~> 3.0"},
       {:geo_postgis, "~> 3.4", only: :test},
-      {:ash_postgres, "~> 1.3", only: :test},
+      {:ash_postgres, "~> 2.0", only: :test},
       {:topo, "~> 1.0", only: :test},
 
       # Testing, analysis, documentation, and release tools
@@ -50,9 +50,9 @@ defmodule AshGeo.MixProject do
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:sobelow, "~> 0.13.0", only: [:dev, :test], runtime: false},
       {:doctor, "~> 0.21.0", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.16.1", only: :test, runtime: false},
-      {:ex_check, "~> 0.15.0", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.30.4", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.16", only: :test, runtime: false},
+      {:ex_check, "~> 0.15", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.30", only: [:dev, :test], runtime: false},
       {:git_ops, "~> 2.6", only: :dev, runtime: false}
     ]
   end
@@ -116,7 +116,8 @@ defmodule AshGeo.MixProject do
 
   defp aliases do
     [
-      test: ["ash_postgres.create --quiet", "ash_postgres.migrate --quiet", "test"]
+      test: ["ash_postgres.create --quiet", "ash_postgres.migrate --quiet", "test"],
+      sobelow: ["sobelow --skip"]
     ]
   end
 end

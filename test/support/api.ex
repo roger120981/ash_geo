@@ -1,9 +1,11 @@
-defmodule AshGeo.Test.Api do
+defmodule AshGeo.Test.Domain do
   @moduledoc false
 
-  use Ash.Api
+  use Ash.Domain
 
   resources do
-    registry AshGeo.Test.Registry
+    resource AshGeo.Test.Resource.Constraint
+    resource AshGeo.Test.Resource.Validation
+    resource AshGeo.Test.Resource.Geom
   end
 end

@@ -22,7 +22,7 @@ defmodule AshGeo.Validation.Topo do
 
   ### Options
 
-  #{Spark.OptionsHelpers.docs(@opts_schema)}
+  #{Spark.Options.docs(@opts_schema)}
 
   ### See also
 
@@ -35,7 +35,7 @@ defmodule AshGeo.Validation.Topo do
 
   @impl Ash.Resource.Validation
   def init(opts) do
-    case Spark.OptionsHelpers.validate(opts, @opts_schema) do
+    case Spark.Options.validate(opts, @opts_schema) do
       {:ok, opts} ->
         {:ok, opts}
 
@@ -45,7 +45,7 @@ defmodule AshGeo.Validation.Topo do
   end
 
   @impl Ash.Resource.Validation
-  def validate(cs, opts) do
+  def validate(cs, opts, _context) do
     geometry_a = attribute_value(cs, opts[:geometry_a])
     geometry_b = attribute_value(cs, opts[:geometry_b])
 

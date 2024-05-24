@@ -17,7 +17,7 @@ defmodule AshGeo.Validation.ArgumentStructType do
 
   ### Options
 
-  #{Spark.OptionsHelpers.docs(@opts_schema)}
+  #{Spark.Options.docs(@opts_schema)}
   """
   @moduledoc since: "0.1.0"
 
@@ -26,7 +26,7 @@ defmodule AshGeo.Validation.ArgumentStructType do
 
   @impl Ash.Resource.Validation
   def init(opts) do
-    case Spark.OptionsHelpers.validate(opts, @opts_schema) do
+    case Spark.Options.validate(opts, @opts_schema) do
       {:ok, opts} ->
         {:ok, opts}
 
@@ -36,7 +36,7 @@ defmodule AshGeo.Validation.ArgumentStructType do
   end
 
   @impl Ash.Resource.Validation
-  def validate(changeset, opts) do
+  def validate(changeset, opts, _context) do
     argument = opts[:argument]
     struct_type = opts[:struct_type]
 
