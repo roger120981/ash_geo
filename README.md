@@ -32,7 +32,7 @@ It provides:
 ```elixir
 def deps do
   [
-    {:ash_geo, "~> 0.2.0"},
+    {:ash_geo, "~> 0.3.0"},
   ]
 end
 ```
