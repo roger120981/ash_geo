@@ -110,6 +110,11 @@ defmodule AshGeo.Geometry.Use do
       @impl Ash.Type
       def storage_type, do: unquote(storage_type)
 
+      @impl true
+      def cast_atomic(new_value, _constraints) do
+        {:atomic, new_value}
+      end
+
       @doc false
       @impl Ash.Type
       def apply_constraints(value, constraints)
